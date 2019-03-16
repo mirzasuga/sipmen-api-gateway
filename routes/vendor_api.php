@@ -207,9 +207,19 @@ Route::get('/shipping-status/histories/{resiId}', [
     'auth:api',
     'scope:vendor_owner,office_counter,staff_warehouse,staff_courier'
 ]);
-
+/**
+ * ADDRESSBOOK
+ */
 Route::get('/addressbook/search', [
     'uses' => 'AddressBookController@search',
+])->middleware([
+    'cors',
+    'auth:api',
+    'scope:vendor_owner,office_counter'
+]);
+
+Route::post('/addressbook/create', [
+    'uses' => 'AddressBookController@create',
 ])->middleware([
     'cors',
     'auth:api',
