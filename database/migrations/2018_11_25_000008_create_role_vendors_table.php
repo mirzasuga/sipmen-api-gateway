@@ -17,7 +17,6 @@ class CreateRoleVendorsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('display');
-            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
