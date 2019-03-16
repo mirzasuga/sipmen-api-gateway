@@ -1,0 +1,8 @@
+'1', 'POS', 'POSTING LOKET', 'Paket Telah Diterima Oleh Loket', NULL, NULL
+'2', 'SRT-WRH', 'SORTING GUDANG', 'Paket Sedang Disorting Digudang', NULL, NULL
+'3', 'DLV-WRH', 'PAKET DALAM PERJALANAN', 'Paket Dalam Perjalanan', NULL, NULL
+'4', 'RCV-WRH', 'PAKET DITERIMA OLEH GUDANG', 'Paket Telah Diterima Oleh Gudang', NULL, NULL
+'5', 'DLV-CST', 'PAKET DALAM PERJALANAN KE TUJUAN', 'Paket Sedang Dikirim Oleh Kurir Ke Lokasi Customer', NULL, NULL
+'6', 'ARV', 'PAKET TELAH DITERIMA', 'Paket Telah Diterima Oleh Customer', NULL, NULL
+'7', 'FLD-BLM', 'PAKET GAGAL - KENDALA BENCANA ALAM', 'Paket Gagal dikirim Karena Kendala Bencana Alam', NULL, NULL
+'8', 'RET-CST', 'PAKET GAGAL DIKIRIM - CUSTOMER NOT FOUND', 'Paket Kembali ke gudang karena customer tidak ada di lokasi', NULL, NULL
