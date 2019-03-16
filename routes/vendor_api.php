@@ -61,29 +61,31 @@ Route::get('branch/vendor/{vendorId}',[
 
 /**WILAYAH SERVICE */
 
-Route::get('/wilayah/province/all', [
-    'uses' => 'Wilayah\ProvinceController@all'
-]);
+Route::middleware(['cors'])->prefix('wilayah')->group(function() {
+    Route::get('/province/all', [
+        'uses' => 'Wilayah\ProvinceController@all'
+    ]);
 
-Route::get('/wilayah/regencies/{provinceId}', [
-    'uses' => 'Wilayah\RegencyController@all'
-]);
+    Route::get('/regencies/{provinceId}', [
+        'uses' => 'Wilayah\RegencyController@all'
+    ]);
 
-Route::get('/wilayah/districts/{regencyId}', [
-    'uses' => 'Wilayah\DistrictController@all'
-]);
+    Route::get('/districts/{regencyId}', [
+        'uses' => 'Wilayah\DistrictController@all'
+    ]);
 
-Route::get('/wilayah/villages/{districtId}', [
-    'uses' => 'Wilayah\VillageController@all'
-]);
+    Route::get('/villages/{districtId}', [
+        'uses' => 'Wilayah\VillageController@all'
+    ]);
 
-Route::get('/wilayah/province/search/by', [
-    'uses' => 'Wilayah\ProvinceController@searchBy'
-]);
+    Route::get('/province/search/by', [
+        'uses' => 'Wilayah\ProvinceController@searchBy'
+    ]);
 
-Route::get('/wilayah/district/search/by', [
-    'uses' => 'Wilayah\DistrictController@searchBy'
-]);
+    Route::get('/district/search/by', [
+        'uses' => 'Wilayah\DistrictController@searchBy'
+    ]);
+});
 // ->middleware([
 //     'cors'
 // ]);
