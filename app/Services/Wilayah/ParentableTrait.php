@@ -7,9 +7,9 @@ trait ParentableTrait {
 
     // use ConsumesExternalApi;
 
-    public function obtainByParentId($parentId) {
+    public function obtainByParentId($parentId, $params = []) {
         $type = $this->type;
-        return $this->performRequest('GET', "/$type/$parentId");
+        return $this->performRequest('GET', "/$type/$parentId", $params);
     }
 
 }

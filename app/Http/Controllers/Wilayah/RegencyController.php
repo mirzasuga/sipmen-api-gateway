@@ -5,21 +5,21 @@ namespace App\Http\Controllers\Wilayah;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Services\WilayahService;
+use App\Services\Wilayah\RegencyService;
 use App\Traits\ApiResponser;
 
 class RegencyController extends Controller
 {
     use ApiResponser;
-    protected $wilayahService;
+    protected $regencyService;
 
-    public function __construct(WilayahService $wilayahService) {
-        $this->wilayahService = $wilayahService;
+    public function __construct(RegencyService $regencyService) {
+        $this->regencyService = $regencyService;
     }
 
     public function all($provinceId, Request $request) {
 
-        $response = $this->wilayahService->obtainRegencies($provinceId, $request->all());
+        $response = $this->regencyService->obtainByParentId($provinceId, $request->all());
         $body = json_decode($response);
 
         if ($body->status_code === 200 ) {

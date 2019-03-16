@@ -5,21 +5,21 @@ namespace App\Http\Controllers\Wilayah;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Services\WilayahService;
+use App\Services\Wilayah\WilayahProvince;
 use App\Traits\ApiResponser;
 
 class ProvinceController extends Controller
 {
     use ApiResponser;
-    protected $wilayahService;
+    protected $wilayahProvince;
 
-    public function __construct(WilayahService $wilayahService) {
-        $this->wilayahService = $wilayahService;
+    public function __construct(WilayahProvince $wilayahProvince) {
+        $this->wilayahProvince = $wilayahProvince;
     }
 
     public function all(Request $request) {
 
-        $response = $this->wilayahService->obtainProvinces();
+        $response = $this->wilayahProvince->obtainAll();
         $body = json_decode($response);
 
         if ($body->status_code === 200 ) {
@@ -31,7 +31,7 @@ class ProvinceController extends Controller
     }
 
     public function searchBy(Request $request) {
-        $response = $this->wilayahService->obtainSearchProvinceBy(
+        $response = $this->wilayahProvince->searchBy(
             $request->all()
         );
         $body = json_decode($response);

@@ -19,4 +19,13 @@ class WilayahService implements IWilayahService {
         $type = $this->type;
         return $this->performRequest('GET', "/$type/all");
     }
+    public function searchBy($params) {
+        $params = [];
+        foreach($data as $key => $val) {
+            $params[] = "$key=$val";
+        }
+        $params = join("&", $params);
+        $type = $this->type;
+        return $this->performRequest('GET', "/$type/search/by?$params");
+    }
 }
