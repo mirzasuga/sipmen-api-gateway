@@ -16,6 +16,7 @@ class CreateRoleVendorsTable extends Migration
         Schema::create('role_vendors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('display');
             $table->string('slug')->unique();
             $table->timestamps();
         });
