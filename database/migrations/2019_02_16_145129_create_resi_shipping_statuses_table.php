@@ -14,6 +14,7 @@ class CreateResiShippingStatusesTable extends Migration
     public function up()
     {
         Schema::create('resi_shipping_statuses', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('resi_id');
             $table->integer('shipping_status_id');
             $table->string('note');
