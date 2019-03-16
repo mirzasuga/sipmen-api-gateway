@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleVendorSeeder::class);
         $this->call(VendorDetailSeeder::class);
         $this->call(VendorUserSeeder::class);
+        $this->call(ShippingStatusSeeder::class);
     }
 }
