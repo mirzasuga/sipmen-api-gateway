@@ -4,5 +4,5 @@ return [
     /**
      * Default Shipping Status ID
      */
-    'default' => 1
+    'default' => env('DEFAULT_SHIPPING_STATUS', 'POS')
 ];

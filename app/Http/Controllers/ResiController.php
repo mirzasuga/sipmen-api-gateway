@@ -26,7 +26,7 @@ class ResiController extends Controller
 
         $user = $request->user();
         $vendorDetail   = $user->vendorDetail;
-        $shippingStatus = ShippingStatus::findOrFail( config('shipping_status.default') );
+        $shippingStatus = ShippingStatus::where('code', config('shipping_status.default') )->firstOrFail();
         $resi = Resi::create([
             'sender_id' => $request->sender_id,
             'receiver_id' => $request->receiver_id,
