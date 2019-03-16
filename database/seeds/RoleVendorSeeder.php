@@ -13,11 +13,6 @@ class RoleVendorSeeder extends Seeder
      */
     public function run()
     {
-        '1', 'Vendor Owner', 'vendor_owner', '2019-01-19 08:30:09', '2019-01-19 08:30:09'
-        '2', 'Office Counter', 'office_counter', '2019-01-19 08:30:09', '2019-01-19 08:30:09'
-        '3', 'Customer', 'customer', '2019-01-19 08:30:09', '2019-01-19 08:30:09'
-        '4', 'Staff Warehouse', 'staff_warehouse', '2019-01-19 08:30:09', '2019-01-19 08:30:09'
-        '5', 'Staff Courier', 'staff_courier', '2019-01-19 08:30:09', '2019-01-19 08:30:09'
 
         $data = [
             [
