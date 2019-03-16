@@ -33,6 +33,22 @@ class VendorUserSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'role' => 'office_counter'
             ],
+            /*** VENDOR Staff Warehouse */
+            [
+                'name' => 'Staff Warehouse JNT',
+                'username' => 'warehouse',
+                'email' => 'warehouse@jnt.com',
+                'password' => bcrypt('secret'),
+                'role' => 'staff_warehouse'
+            ],
+            /*** VENDOR Staff Courier */
+            [
+                'name' => 'Staff Courier JNT',
+                'username' => 'courier',
+                'email' => 'courier@jnt.com',
+                'password' => bcrypt('secret'),
+                'role' => 'staff_courier'
+            ],
         ];
         foreach ($data as $vendor) {
             $str_role = $vendor['role'];
