@@ -7,7 +7,10 @@ Route::middleware('auth:api')->get('/vendor', function(Request $request) {
     return $request->user();
 
 });
-
+Route::middleware([
+    'cors',
+    'auth:api'
+])->post('/broadcast/auth', 'SipmenBroadcastController@auth');
 Route::post('vendor/login', [
     'uses' => 'OAuth\VendorTokenAuthController@issueToken',
     'middleware' => [
