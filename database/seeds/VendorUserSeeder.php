@@ -21,6 +21,7 @@ class VendorUserSeeder extends Seeder
                 'name' => 'Owner',
                 'username' => 'owner',
                 'email' => 'owner@jnt.com',
+                'mobile_phone' => '0895363559212',
                 'password' => bcrypt('secret'),
                 'role' => 'vendor_owner'
             ],
@@ -30,6 +31,7 @@ class VendorUserSeeder extends Seeder
                 'name' => 'Office Counter JNT',
                 'username' => 'office',
                 'email' => 'office@jnt.com',
+                'mobile_phone' => '0895363559213',
                 'password' => bcrypt('secret'),
                 'role' => 'office_counter'
             ],
@@ -38,6 +40,7 @@ class VendorUserSeeder extends Seeder
                 'name' => 'Staff Warehouse JNT',
                 'username' => 'warehouse',
                 'email' => 'warehouse@jnt.com',
+                'mobile_phone' => '0895363559214',
                 'password' => bcrypt('secret'),
                 'role' => 'staff_warehouse'
             ],
@@ -46,6 +49,7 @@ class VendorUserSeeder extends Seeder
                 'name' => 'Staff Courier JNT',
                 'username' => 'courier',
                 'email' => 'courier@jnt.com',
+                'mobile_phone' => '0895363559215',
                 'password' => bcrypt('secret'),
                 'role' => 'staff_courier'
             ],

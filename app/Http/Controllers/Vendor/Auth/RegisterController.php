@@ -19,6 +19,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:vendors'],
             'username' => ['required', 'string', 'max:70', 'unique:vendors'],
+            'mobile_phone' => ['required', 'string', 'min:8', 'unique:vendors'],
             'password' => ['required', 'string', 'min:6'],
         ]);
     }
@@ -27,6 +28,7 @@ class RegisterController extends Controller
         return Vendor::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'mobile_phone' => $data['mobile_phone'],
             'username' => $data['username'],
             'password' => Hash::make( $data['password'] )
         ]);
@@ -36,12 +38,12 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         $vendor = $this->create( $request->all() );
-        
+
         event( new VendorRegistered( $vendor ) );
 
         return response()->json([
             'OK' => true,
-            'message' => 'Pendaftaran berhasil'
+            'message' => 'Pendaftaran berhasil, silahkan cek email anda'
         ]);
 
         // event(new Registered($user = $this->create($request->all())));
