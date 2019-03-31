@@ -77,7 +77,8 @@ class Kernel extends HttpKernel
         'exists_vendor_set_password_token' => \App\Http\Middleware\ExistsVendorSetPasswordTokenMiddleware::class,
         'set_auth_provider' => \App\Http\Middleware\SetAuthProvider::class,
         'find_tarif' => \App\Http\Middleware\FindTarifMiddleware::class,
-        'verify_user_branch' => \App\Http\Middleware\VerifyUserBranch::class
+        'verify_user_branch' => \App\Http\Middleware\VerifyUserBranch::class,
+        'vendor_verified' => \App\Http\Middleware\VendorEmailVerified::Class
     ];
 
     /**

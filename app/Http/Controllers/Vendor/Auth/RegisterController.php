@@ -42,12 +42,13 @@ class RegisterController extends Controller
 
         $vendor         = $this->create( $request->all() );
         $vendorDetail   = VendorDetail::initialize();
-        $roles          = RoleVendor::getDefaultRole();
+        $role           = RoleVendor::getDefaultRole();
 
         $vendor->vendor_detail_id = $vendorDetail->id;
+        $vendor->roles()->attach($role);
         $vendor->save();
 
-        // event( new VendorRegistered( $vendor ) );
+        event( new VendorRegistered( $vendor ) );
 
         return response()->json([
             'OK' => true,

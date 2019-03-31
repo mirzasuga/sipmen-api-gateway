@@ -13,7 +13,11 @@ use App\Models\Vendor\RoleVendor as Role;
 use App\VendorDetail;
 use App\Resi;
 
-class Vendor extends Authenticatable
+use App\Mail\VendorVerificationMail;
+use Mail;
+use Illuminate\Support\Facades\Redis;
+
+class Vendor extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable, CheckCredential;
 
@@ -48,6 +52,23 @@ class Vendor extends Authenticatable
     public function suratJalan() {
         return $this->hasMany(SuratJalan::class);
     }
+
+    public function sendEmailVerificationNotification() {
+
+        $token = str_random(16);
+        $expired = env('VENDOR_STAFF_VERIFICATION_EXPIRED') + 0;
+
+        Redis::set('email-verification:vendorId-'.$this->id.':token-'.$token, $this->toJson(), 'EX', $expired);
+
+        $LINK_CONFIRMATION = env('DASHBOARD_BASEURL', 'https://sipmen-backoffice.herokuapp.com/#/');
+        $link = "$LINK_CONFIRMATION/#/verify-email/$this->id/$token";
+
+        Mail::to($this->email)->send(new VendorVerificationMail($link));
+    }
+
+    // public function hasVerifiedEmail() {
+    //     return $this->email_verified_at !== null;
+    // }
 
     // public function ScopeCheckCredential($query, $email, $password) {
     //     return $query->where('email', $email)->where('password',

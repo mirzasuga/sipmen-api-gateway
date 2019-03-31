@@ -25,6 +25,8 @@ use App\Events\ResiAttachedToSuratJalan;
 use App\Events\SuratJalanOnTheWayWarehouse;
 use App\Listeners\BulkUpdateShippingStatus;
 
+use App\Listeners\SendEmailVerificationVendor;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -37,7 +39,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         VendorRegistered::class => [
-            VendorRegisteredListener::class
+            SendEmailVerificationVendor::class
+            // VendorRegisteredListener::class
         ],
         VendorDetailCreated::class => [
             AttachVendorDetailToVendorUser::class,

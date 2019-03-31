@@ -23,21 +23,21 @@ class VendorTokenAuthController extends AccessTokenController
 {
     /**
      * Authorization server
-     * 
+     *
      * @var \League\OAuth2\Server\AuthorizationServer
      */
     protected $server;
 
     /**
      * The token repository instance.
-     * 
+     *
      * @var \Laravel\Passport\TokenRepository
      */
     protected $tokens;
 
     /**
      * The JWT parser instance.
-     * 
+     *
      * @var \Lcobucci\JWT\Parser
      */
     protected $jwt;
@@ -57,20 +57,20 @@ class VendorTokenAuthController extends AccessTokenController
 
     /**
      * Override the default Laravel Passport token generation
-     * 
+     *
      * @param ServerRequestInterface $request
      * @return array
      * @throws UserNotFoundException
      */
 
      public function issueToken( ServerRequestInterface $request ) {
-        
+
         $data = $request->getParsedBody();
 
         $body = parent::issueToken($request)->getContent();
-        
+
         $token = json_decode($body, true);
-        
+
         if (array_key_exists('error', $token)) {
             return response()->json([
                 'error' => $token['error'],

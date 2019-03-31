@@ -15,6 +15,7 @@ Route::post('vendor/login', [
     'uses' => 'OAuth\VendorTokenAuthController@issueToken',
     'middleware' => [
         'cors',
+        'vendor_verified',
         'vendor_auth',
         'throttle'
     ],
@@ -259,4 +260,11 @@ Route::put('/courier/location', [
     'cors',
     'auth:api',
     'scope:staff_courier,staff_warehouse,vendor_owner'
+]);
+
+
+Route::post('/vendor/verify-email', [
+    'uses' => 'Vendor\Auth\EmailVerification@verify'
+])->middleware([
+    'cors'
 ]);
