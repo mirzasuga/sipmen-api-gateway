@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Vendor;
+use App\VendorDetail;
+use App\Models\Vendor\RoleVendor;
 use Auth;
 use App\Events\VendorRegistered;
 
@@ -37,9 +39,15 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-        $vendor = $this->create( $request->all() );
 
-        event( new VendorRegistered( $vendor ) );
+        $vendor         = $this->create( $request->all() );
+        $vendorDetail   = VendorDetail::initialize();
+        $roles          = RoleVendor::getDefaultRole();
+
+        $vendor->vendor_detail_id = $vendorDetail->id;
+        $vendor->save();
+
+        // event( new VendorRegistered( $vendor ) );
 
         return response()->json([
             'OK' => true,

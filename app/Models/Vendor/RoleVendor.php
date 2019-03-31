@@ -19,11 +19,22 @@ class RoleVendor extends Model
 
     public function scopeExists($query, $id) {
         $data = $query->where('id', $id)->first();
-        
+
         if($data) {
             return true;
         }
 
         return false;
+    }
+
+
+    /**
+     * STATIC FUNCTION
+     */
+
+    public static function getDefaultRole() {
+        return self::firstOrCreate([
+            'name' => config('vendor_rules.default_role')
+        ]);
     }
 }
